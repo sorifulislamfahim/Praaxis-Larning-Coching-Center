@@ -4,3 +4,18 @@
     font-weight: 700;
     margin-left: 10px;
 }
+.logOut-btn{
+    background-color: cadetblue;
+    border-radius: 5px;
+    padding: 5px;
+}
+.logOut-btn:hover{
+    background-color: orange;
+    color: white;
+}
+.login-container{
+    display: flex;
+}
+.photo-url{
+    height: 40px;
+}

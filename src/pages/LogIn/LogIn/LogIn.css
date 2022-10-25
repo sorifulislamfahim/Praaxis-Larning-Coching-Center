@@ -1,9 +1,9 @@
 .from-container{
     width: 500px;
     height: 600px;
-    /* margin: 100px auto; */
     border: 1px solid #95A0A7;
     border-radius: 8px;
+    padding: 20px 40px;
     
 }
 .from-title{
@@ -14,10 +14,6 @@
     line-height: 42px;
     text-align: center;
     color: #2A414F;
-}
-form{
-    padding-left: 40px;
-    padding-top: 20px;
 }
 .from-control{
     margin-bottom: 20px;
@@ -62,7 +58,7 @@ form{
 .extra-logIn-button{
     width: 415px;
     height: 55px;
-    margin-bottom: 20px;
+    margin: 10px auto;
     font-size: 20px;
 }
 .extra-logIn-button:hover{
