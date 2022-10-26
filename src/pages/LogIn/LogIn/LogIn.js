@@ -1,14 +1,18 @@
-import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import './LogIn.css'
 import { AuthContext } from '../../../conrtext/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 
 const LogIn = () => {
+    const [error, setError] = useState('');
     const {providerLogIn, logInUser} = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleGoogleSignIn = () => {
         providerLogIn(googleProvider)
@@ -30,9 +34,14 @@ const LogIn = () => {
             const user = result.user;
             console.log(user)
             form.reset();
-            navigate('/')
+            setError('');
+            navigate(from, {replace: true})
         })
-        .catch(error => console.error(error))
+        .catch(error => {
+            console.error(error)
+            setError(error.message)
+            form.reset();
+        })
     }
 
     return (
@@ -47,6 +56,7 @@ const LogIn = () => {
                     <label htmlFor="password">Password</label>
                     <input type="password" name="password" placeholder='enter your password' required />
                 </div>
+                <p className='text-danger'>{error}</p>
                 <input className='btn-login' type="submit" value="Login" />
                 <p className='external'>New to this site<Link to='/register'> Create New Account</Link></p>      
             </form>

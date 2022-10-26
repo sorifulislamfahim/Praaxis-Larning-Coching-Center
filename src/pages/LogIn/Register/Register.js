@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../conrtext/AuthProvider/AuthProvider';
 
 const Register = () => {
     const {createUser} = useContext(AuthContext);
+    const [error, setError] = useState('');
     const navigate = useNavigate();
 
 
@@ -21,10 +23,14 @@ const Register = () => {
             const user = result.user;
             console.log(user)
             form.reset();
+            setError('');
             navigate('/login')
 
         })
-        .catch(error => console.error(error))
+        .catch(error => {
+            console.error(error)
+            setError(error.message);
+        })
     }
     return (
         <div className='from-container'>
@@ -47,7 +53,7 @@ const Register = () => {
                     <input type="password" name="password" placeholder='Enter your password' required />
                 </div>
                 
-                <p className='text-error'> </p>
+                <p className='text-danger'>{error} </p>
                 <input className='btn-login' type="submit" value="Register" />
                 <p className='external'>Alredy have an acount?<Link to='/login'> Login</Link></p>
             </form>
