@@ -1,9 +1,17 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
+import CourseSummary from '../Shared/CourseSummary/CourseSummary';
 
 const Home = () => {
+    const allCourses = useLoaderData()
     return (
         <div>
-            <h2>This is Home</h2>
+            {
+                allCourses.map(courses => <CourseSummary
+                    key={courses._id}
+                    courses={courses}
+                ></CourseSummary>)
+            }
         </div>
     );
 };

@@ -15,7 +15,7 @@ const Courses = () => {
     return (
         <div>
             <h4>All Course In this catagory {courses.length}</h4>
-            <div className='courses-container'>
+            <div className='courses-container '>
                 {
                     courses.map(course => <Card
                         key={course.id}
