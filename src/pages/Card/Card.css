@@ -1,0 +1,9 @@
+.card-container{
+    margin: 20px;
+    border: 2px dashed gray;
+    padding: 10px;
+}
+.card-container img{
+    width: 250px;
+    height: 250px;
+}

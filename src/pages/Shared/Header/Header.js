@@ -4,12 +4,12 @@ import { Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import logo from '../../../asets/images/fav2.png';
 import { AuthContext } from '../../../conrtext/AuthProvider/AuthProvider';
 import './Header.css'
 import { FaUser } from "react-icons/fa";
+import SideNav from '../SideNav/SideNav';
 
 const Header = () => {
   const {user, logOut} = useContext(AuthContext);
@@ -34,11 +34,9 @@ const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#features">Courses</Nav.Link>
+              <Nav.Link><Link to='/courses'>Courses</Link></Nav.Link>
               <Nav.Link href="#pricing">FAQ</Nav.Link>
               <Nav.Link><Link to='/blogs'>Blogs</Link></Nav.Link>
-              
-             
             </Nav>
             <Nav>
               <Nav.Link>
@@ -65,6 +63,9 @@ const Header = () => {
                 }
               </Nav.Link>
             </Nav>
+            <div  className='d-lg-none'>
+              <SideNav></SideNav>
+            </div>
           </Navbar.Collapse>
         </Container>
       </Navbar>
