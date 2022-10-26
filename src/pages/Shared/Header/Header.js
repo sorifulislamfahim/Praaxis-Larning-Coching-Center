@@ -34,9 +34,8 @@ const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link><Link to='/courses'>Courses</Link></Nav.Link>
-              <Nav.Link href="#pricing">FAQ</Nav.Link>
-              <Nav.Link><Link to='/blogs'>Blogs</Link></Nav.Link>
+              <Nav.Link className='title' href="#courses"><Link to='/courses'>Courses</Link></Nav.Link>
+              <Nav.Link className='title' href="#blogs"><Link to='/blogs'>Blogs</Link></Nav.Link>
             </Nav>
             <Nav>
               <Nav.Link>
@@ -53,11 +52,12 @@ const Header = () => {
                 }
                  
               </Nav.Link>
-              <Nav.Link className='photo-url' eventKey={2}>
+              <Nav.Link eventKey={2}>
                 {user?.photoURL ? 
                 <Image
                 src={user.photoURL}
                 roundedCircle
+                style={{height: '40px'}}
                 ></Image> : 
                 <FaUser></FaUser>
                 }
