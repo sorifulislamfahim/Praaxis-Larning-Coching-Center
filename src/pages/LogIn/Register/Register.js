@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../../conrtext/AuthProvider/AuthProvider';
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext);
+    const {createUser, updateUserProfile} = useContext(AuthContext);
     const [error, setError] = useState('');
+    const [acepted, setAcepted] = useState(false);
     const navigate = useNavigate();
 
 
@@ -25,6 +27,7 @@ const Register = () => {
             form.reset();
             setError('');
             navigate('/login')
+            handleUpdateUserProfile(name, photoURL)
 
         })
         .catch(error => {
@@ -32,6 +35,21 @@ const Register = () => {
             setError(error.message);
         })
     }
+
+    const handleAcepted = (event) => {
+        setAcepted(event.target.checked)
+    }
+
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+        .then( () => {})
+        .catch(error => console.error(error))
+    }
+
     return (
         <div className='from-container'>
             <h2 className='from-title'>Register</h2>
@@ -52,9 +70,13 @@ const Register = () => {
                     <label htmlFor="password">Password</label>
                     <input type="password" name="password" placeholder='Enter your password' required />
                 </div>
-                
                 <p className='text-danger'>{error} </p>
-                <input className='btn-login' type="submit" value="Register" />
+                <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                    <Form.Check type="checkbox" 
+                    onClick={handleAcepted}
+                    label={<>Acept Our <Link to='/condition'>Condition</Link></>}/>
+                </Form.Group>
+                <input disabled={!acepted} className='btn-login' type="submit" value="Register" />
                 <p className='external'>Alredy have an acount?<Link to='/login'> Login</Link></p>
             </form>
         </div>

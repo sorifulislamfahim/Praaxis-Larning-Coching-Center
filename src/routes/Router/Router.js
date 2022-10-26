@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../layouts/Main";
 import Blogs from "../../pages/Blogs/Blogs";
+import ChackCondition from "../../pages/ChakCondition/ChackCondition";
 import Course from "../../pages/Course/Course";
 import Courses from "../../pages/Courses/Courses";
 import Home from "../../pages/Home/Home";
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
             {
                 path: '/register', 
                 element: <Register></Register>
+            },
+            {
+                path: '/condition',
+                element: <ChackCondition></ChackCondition>
             },
             {
                 path: '/blogs', 
