@@ -13,8 +13,15 @@ const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
+
+    // Google Provider 
     const providerLogIn = (provider) => {
         setLoading(true)
+        return signInWithPopup(auth, provider)
+    }
+
+    // Github Provider 
+    const githubProviderLogIn = (provider) => {
         return signInWithPopup(auth, provider)
     }
 
@@ -29,16 +36,19 @@ const AuthProvider = ({children}) => {
         }
     } , []);
 
+    // log out btn handle 
     const logOut = () => {
         setLoading(true);
         return signOut(auth)
     }
 
+    // user email and pasword registration 
     const createUser = (email, password) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
+    // user email and pasword log in
     const logInUser = (email, password) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
@@ -48,8 +58,7 @@ const AuthProvider = ({children}) => {
         return updateProfile(auth.currentUser, profile)
     }
 
-
-    const authInfo = {user, loading, updateUserProfile, providerLogIn, logOut, createUser, logInUser}
+    const authInfo = {user, loading, githubProviderLogIn, updateUserProfile, providerLogIn, logOut, createUser, logInUser}
 
     return (
         <AuthContext.Provider value={authInfo}>

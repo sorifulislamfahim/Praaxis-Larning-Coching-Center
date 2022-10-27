@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
             {
                 path: '/', 
                 element: <Home></Home>,
-                loader: () => fetch(`http://localhost:5000/home`)
+                loader: () => fetch(`https://praxis-server.vercel.app/home`)
             },
             {
                 path: '/courses', 
@@ -29,12 +29,12 @@ export const router = createBrowserRouter([
             {
                 path: '/courses/:id',
                 element: <Course></Course>,
-                loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({params}) => fetch(`https://praxis-server.vercel.app/courses/${params.id}`)
             },
             {
                 path: '/course/:id', 
                 element: <PrivateRoute><CourseDetails></CourseDetails></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/course/${params.id}`)
+                loader: ({params}) => fetch(`https://praxis-server.vercel.app/course/${params.id}`)
 
             },
             {

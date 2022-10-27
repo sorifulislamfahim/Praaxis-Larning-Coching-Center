@@ -2,8 +2,8 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div>
-            
+        <div className='text-center'>
+           <p><small>@copyright dragon news</small></p>
         </div>
     );
 };

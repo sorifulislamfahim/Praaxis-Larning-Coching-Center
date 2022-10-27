@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
-import { Image } from 'react-bootstrap';
+import { Button, Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -36,6 +36,10 @@ const Header = () => {
             <Nav className="me-auto">
               <Nav.Link className='title' href="#courses"><Link to='/courses'>Courses</Link></Nav.Link>
               <Nav.Link className='title' href="#blogs"><Link to='/blogs'>Blogs</Link></Nav.Link>
+              <Nav.Link>
+                    <Button>Drak</Button>
+                    <Button>Light</Button>
+              </Nav.Link>
             </Nav>
             <Nav>
               <Nav.Link>

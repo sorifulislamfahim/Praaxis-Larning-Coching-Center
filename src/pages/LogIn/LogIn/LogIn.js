@@ -3,12 +3,13 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import './LogIn.css'
 import { AuthContext } from '../../../conrtext/AuthProvider/AuthProvider';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const LogIn = () => {
     const [error, setError] = useState('');
-    const {providerLogIn, logInUser} = useContext(AuthContext);
+    const {providerLogIn, githubProviderLogIn, logInUser} = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
+    const githuvProvider = new GithubAuthProvider();
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -21,6 +22,17 @@ const LogIn = () => {
             console.log(user);
         })
         .catch(error => console.error('error', error))
+    }
+
+    const handleGithubSignIn =() => {
+        githubProviderLogIn(githuvProvider)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => {
+            console.error('error:', error)
+        })
     }
 
     const handleSubmit = event => {
@@ -62,7 +74,7 @@ const LogIn = () => {
             </form>
                 <button onClick={handleGoogleSignIn} className='extra-logIn-button'><FaGoogle></FaGoogle> Login With Google</button>
                 <br />
-                <button className='extra-logIn-button'><FaGithub></FaGithub> Login With Github</button>
+                <button onClick={handleGithubSignIn} className='extra-logIn-button'><FaGithub></FaGithub> Login With Github</button>
         </div>
     );
 };

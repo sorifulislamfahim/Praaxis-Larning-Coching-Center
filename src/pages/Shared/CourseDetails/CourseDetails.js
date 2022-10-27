@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Image } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { FaEye, FaPrint, FaStar } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
+import { useReactToPrint } from 'react-to-print';
 
 const CourseDetails = () => {
+    const componantRef = useRef();
+
+    const handlePrint = useReactToPrint({
+        content : () => componantRef.current,
+    })
+
+
     const detailsData = useLoaderData();
     const {title, details, author, image_url, total_view, rating} = detailsData;
     return (
@@ -24,10 +31,10 @@ const CourseDetails = () => {
                 </div>
             </div>
             <div >
-               <FaPrint className='fs-1'></FaPrint>
+               <FaPrint onClick={handlePrint} className='fs-1'></FaPrint>
             </div>
         </Card.Header>
-        <Card.Body>
+        <Card.Body ref={componantRef}>
             <Card.Title className='fs-2'>{title}</Card.Title>
             <Card.Img variant="top" src={image_url} />
             <Card.Text className='fs-4'>
