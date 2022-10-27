@@ -4,6 +4,7 @@ import Blogs from "../../pages/Blogs/Blogs";
 import ChackCondition from "../../pages/ChakCondition/ChackCondition";
 import Course from "../../pages/Course/Course";
 import Courses from "../../pages/Courses/Courses";
+import ErrorPage from "../../pages/ErrorPage/ErrorPage";
 import Home from "../../pages/Home/Home";
 import LogIn from "../../pages/LogIn/LogIn/LogIn";
 import Register from "../../pages/LogIn/Register/Register";
@@ -56,6 +57,8 @@ export const router = createBrowserRouter([
                 path: '/blogs', 
                 element: <Blogs></Blogs>
             }
-        ]
+        ],
+        errorElement: <ErrorPage></ErrorPage>
+        
     }
 ])
