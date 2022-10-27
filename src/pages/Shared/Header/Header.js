@@ -52,7 +52,7 @@ const Header = () => {
                 }
                  
               </Nav.Link>
-              <Nav.Link eventKey={2}>
+              <Link to="/profile">
                 {user?.photoURL ? 
                 <Image
                 src={user.photoURL}
@@ -61,7 +61,7 @@ const Header = () => {
                 ></Image> : 
                 <FaUser></FaUser>
                 }
-              </Nav.Link>
+              </Link>
             </Nav>
             <div  className='d-lg-none'>
               <SideNav></SideNav>
